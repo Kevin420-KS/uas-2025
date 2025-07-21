@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,9 +13,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Buat role super_admin jika belum ada
+        Role::firstOrCreate(['name' => 'super_admin', 'guard_name' => 'web']);
+
+        // Buat user admin
+        $user = User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+        ]);
+
+        // Assign role ke user
+        $user->assignRole('super_admin');
+
+        // Jalankan semua seeder lainnya
         $this->call([
-            RoleSeeder::class,
-            UserSeeder::class,
+            PembacaSeeder::class,
+            BukuSeeder::class,
+            PeminatSeeder::class,
         ]);
     }
 }

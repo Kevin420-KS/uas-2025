@@ -1,0 +1,423 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Perpustakaan Digital",
+        "description": "Dokumentasi API untuk Perpustakaan Digital",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/bukus": {
+            "get": {
+                "tags": [
+                    "Buku"
+                ],
+                "summary": "Ambil daftar semua buku",
+                "operationId": "a9a32a403780bd832c5206a746bf2b34",
+                "responses": {
+                    "200": {
+                        "description": "Daftar buku berhasil diambil"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Buku"
+                ],
+                "summary": "Tambahkan buku baru",
+                "operationId": "3947c0de3d328d6ce7202e29ab49912f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "judul",
+                                    "penulis"
+                                ],
+                                "properties": {
+                                    "judul": {
+                                        "type": "string"
+                                    },
+                                    "penulis": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Buku berhasil ditambahkan"
+                    }
+                }
+            }
+        },
+        "/api/bukus/{id}": {
+            "get": {
+                "tags": [
+                    "Buku"
+                ],
+                "summary": "Ambil detail buku",
+                "operationId": "36f87333325393fc154de5648a87efb1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail buku"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Buku"
+                ],
+                "summary": "Update data buku",
+                "operationId": "8f9970b802cc0052a2d09e90bf3daf45",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "judul": {
+                                        "type": "string"
+                                    },
+                                    "penulis": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data buku diperbarui"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Buku"
+                ],
+                "summary": "Hapus buku",
+                "operationId": "b8327d790f9c6f27723493e4d556082b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Buku dihapus"
+                    }
+                }
+            }
+        },
+        "/api/pembacas": {
+            "get": {
+                "tags": [
+                    "Pembaca"
+                ],
+                "summary": "Ambil daftar semua pembaca",
+                "operationId": "8fdc45a10b83201daf33bfe52fb760cb",
+                "responses": {
+                    "200": {
+                        "description": "Daftar pembaca berhasil diambil"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Pembaca"
+                ],
+                "summary": "Tambahkan pembaca baru",
+                "operationId": "ace00786b18418799de70c9ad328417a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "nama": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Pembaca berhasil ditambahkan"
+                    }
+                }
+            }
+        },
+        "/api/pembacas/{id}": {
+            "get": {
+                "tags": [
+                    "Pembaca"
+                ],
+                "summary": "Ambil detail pembaca",
+                "operationId": "245304fcb55c343424ef25d18a31b6ca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail pembaca"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Pembaca"
+                ],
+                "summary": "Update data pembaca",
+                "operationId": "b2ac6665b8abb7298ac165caf45834f0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nama": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data pembaca diperbarui"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Pembaca"
+                ],
+                "summary": "Hapus pembaca",
+                "operationId": "9bdceccd84f7cb07266350ed953dc6ad",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Pembaca dihapus"
+                    }
+                }
+            }
+        },
+        "/api/peminats": {
+            "get": {
+                "tags": [
+                    "Peminat"
+                ],
+                "summary": "Ambil daftar semua peminat",
+                "operationId": "af691941c599dbb7d875bc80e22ec098",
+                "responses": {
+                    "200": {
+                        "description": "Daftar peminat berhasil diambil"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Peminat"
+                ],
+                "summary": "Tambahkan peminat baru",
+                "operationId": "49e560ca4aec3d0f189d05fa8026f062",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama",
+                                    "minat"
+                                ],
+                                "properties": {
+                                    "nama": {
+                                        "type": "string"
+                                    },
+                                    "minat": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Peminat berhasil ditambahkan"
+                    }
+                }
+            }
+        },
+        "/api/peminats/{id}": {
+            "get": {
+                "tags": [
+                    "Peminat"
+                ],
+                "summary": "Ambil detail peminat",
+                "operationId": "9705732e47a81a68481f7c6c018b03d0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail peminat"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Peminat"
+                ],
+                "summary": "Update data peminat",
+                "operationId": "beb235d6f924c25897b05041df90e342",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nama": {
+                                        "type": "string"
+                                    },
+                                    "minat": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data peminat diperbarui"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Peminat"
+                ],
+                "summary": "Hapus peminat",
+                "operationId": "dafa1d99f62e0b891cdd577c37c94443",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Peminat dihapus"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Buku",
+            "description": "Buku"
+        },
+        {
+            "name": "Pembaca",
+            "description": "Pembaca"
+        },
+        {
+            "name": "Peminat",
+            "description": "Peminat"
+        }
+    ]
+}
