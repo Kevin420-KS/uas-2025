@@ -1,23 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Livewire\Livewire;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 
-/* NOTE: Do Not Remove
-/ Livewire asset handling if using sub folder in domain
-*/
-
-Livewire::setUpdateRoute(function ($handle) {
-    return Route::post(config('app.asset_prefix') . '/livewire/update', $handle);
-});
-
-Livewire::setScriptRoute(function ($handle) {
-    return Route::get(config('app.asset_prefix') . '/livewire/livewire.js', $handle);
-});
-/*
-/ END
-*/
 Route::get('/', function () {
-    return view('welcome');
+    $path = resource_path('frontend/index.html');
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $content = File::get($path);
+    return Response::make($content, 200)
+        ->header("Content-Type", "text/html");
 });
